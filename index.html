@@ -226,6 +226,45 @@
     .portfolio-description {
       width: 50%;
     }
+    #about .about-intro {
+        text-align: center; 
+        max-width: 800px; 
+        margin: 0 auto 50px auto;
+    }
+    .about-details {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        text-align: left;
+        flex-wrap: wrap;
+    }
+    .about-column {
+        min-width: 250px;
+    }
+    .about-column h3 {
+        font-size: 1.5em;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--light-gray);
+        padding-bottom: 10px;
+    }
+    .about-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .about-column li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px;
+    }
+    .about-column li::before {
+        content: '✓';
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
     #contact {
       background: var(--primary-color);
       color: var(--white);
@@ -331,6 +370,13 @@
       .portfolio-description {
         margin-top: 20px;
       }
+      .about-details {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-column {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -357,7 +403,7 @@
   <main>
     <section class="hero">
       <h2>解放您的創意，讓技術成為助力</h2>
-      <p>提供每日 4 小時的穩定技術支援，協助您的團隊解決 3ds Max, Maya, Houdini 中的技術難題，讓藝術家專注於創作。</p>
+      <p>別讓技術問題拖慢您的遊戲開發。我提供每日 4 小時的技術美術支援，專門掃除美術流程中的各種瓶頸，確保您的藝術家能心無旁鶩地進行創作。</p>
       <a href="#contact" class="cta-button">開始合作</a>
     </section>
 
@@ -460,9 +506,38 @@
     </section>
 
     <section id="about">
-        <div class="container reveal-on-scroll" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="container reveal-on-scroll">
             <h2 class="section-title">關於 Vic</h2>
-            <p>我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
+            <p class="about-intro">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
+            <div class="about-details">
+                <div class="about-column">
+                    <h3>主要經歷</h3>
+                    <p>北京九鳳</p>
+                    <p>游戲夢工場</p>
+                </div>
+                <div class="about-column">
+                    <h3>涉略軟體</h3>
+                    <ul>
+                        <li>Unreal</li>
+                        <li>Unity</li>
+                        <li>Cocos Creator</li>
+                        <li>3ds Max</li>
+                        <li>Maya</li>
+                        <li>Blender</li>
+                        <li>Photoshop</li>
+                    </ul>
+                </div>
+                <div class="about-column">
+                    <h3>涉略語言</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Maya MEL</li>
+                        <li>Max Script</li>
+                        <li>C#</li>
+                        <li>TypeScript</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
