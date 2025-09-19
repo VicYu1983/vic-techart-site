@@ -201,16 +201,27 @@
       border-radius: 8px;
       overflow: hidden;
     }
-    .portfolio-image img,
-    .portfolio-image video {
+    .portfolio-image img {
       width: 100%;
       height: auto;
       display: block;
       transition: transform 0.3s ease;
     }
-    .portfolio-item:hover .portfolio-image img,
-    .portfolio-item:hover .portfolio-image video {
+    .portfolio-item:hover .portfolio-image img {
         transform: scale(1.05);
+    }
+    .portfolio-image.video-embed {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+    }
+    .portfolio-image.video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
     .portfolio-description {
       width: 50%;
@@ -427,12 +438,12 @@
         <h2 class="section-title reveal-on-scroll">精選案例</h2>
         <div id="portfolio-container">
           <div class="portfolio-item reveal-on-scroll">
-            <div class="portfolio-image">
-              <img src="images/project-a.png" alt="專案 A">
+            <div class="portfolio-image video-embed">
+              <iframe src="https://www.youtube.com/embed/Ki_l_q_c9H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="portfolio-description">
-              <h3>AAA 遊戲場景優化</h3>
-              <p>為一款開放世界遊戲分析場景資源，透過材質合併、LOD (Level of Detail) 生成與客製化渲染腳本，成功將平均 Draw Call 降低 40%，大幅提升遊戲在中低階硬體上的運行幀率。</p>
+              <h3>Houdini 程序化建模與特效</h3>
+              <p>此專案展示了使用 Houdini 進行複雜的程序化建模、動態模擬與視覺特效製作。從建築生成到粒子系統，充分展現了程序化流程在節省時間與提升創意上的巨大潛力。</p>
             </div>
           </div>
           <div class="portfolio-item reveal-on-scroll">
