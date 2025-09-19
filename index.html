@@ -226,6 +226,19 @@
     .portfolio-description {
       width: 60%;
     }
+    .portfolio-description h3 {
+        margin-top: 0;
+    }
+    .portfolio-description h4 {
+        font-size: 1.1em;
+        color: var(--text-color);
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+    .portfolio-description p {
+        margin: 0;
+        color: var(--secondary-color);
+    }
     #about .container {
         text-align: center;
     }
@@ -744,12 +757,37 @@
 
             const portfolioDescription = document.createElement('div');
             portfolioDescription.classList.add('portfolio-description');
+            
             const title = document.createElement('h3');
             title.textContent = item.title;
-            const description = document.createElement('p');
-            description.textContent = item.description;
             portfolioDescription.appendChild(title);
-            portfolioDescription.appendChild(description);
+
+            if (item.art_need) {
+                const needTitle = document.createElement('h4');
+                needTitle.textContent = '美術需求';
+                const needText = document.createElement('p');
+                needText.textContent = item.art_need;
+                portfolioDescription.appendChild(needTitle);
+                portfolioDescription.appendChild(needText);
+            }
+
+            if (item.my_solution) {
+                const solutionTitle = document.createElement('h4');
+                solutionTitle.textContent = '我的解決方案';
+                const solutionText = document.createElement('p');
+                solutionText.textContent = item.my_solution;
+                portfolioDescription.appendChild(solutionTitle);
+                portfolioDescription.appendChild(solutionText);
+            }
+
+            if (item.impact) {
+                const impactTitle = document.createElement('h4');
+                impactTitle.textContent = '專案影響';
+                const impactText = document.createElement('p');
+                impactText.textContent = item.impact;
+                portfolioDescription.appendChild(impactTitle);
+                portfolioDescription.appendChild(impactText);
+            }
 
             portfolioItem.appendChild(mediaContainer);
             portfolioItem.appendChild(portfolioDescription);

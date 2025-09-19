@@ -4,13 +4,17 @@
     "provider": "youtube",
     "src": "https://youtu.be/FQ2pSbBU0vg?si=cxMCvb0XzPtmW6wv",
     "title": "程序化房屋工具 (Unreal)",
-    "description": "程序化房屋工具，能夠快速生成各種不同的房屋模型，節省了設計師的時間和精力。"
+    "art_need": "美術團隊需要快速搭建大量風格統一但細節各異的城鎮房屋，手動搭建耗時巨大且難以保證風格一致性。",
+    "my_solution": "使用Unreal開發了一套程序化工具。美術師只需要拉動幾個參數（如長、寬、樓層、房頂樣式），或繪製一條曲線，即可快速生成完整的房屋模型。",
+    "impact": "免除了美術的繁瑣工作，並確保了整體美術風格的統一，讓場景搭建效率提升。"
   },
   {
     "type": "video",
     "provider": "youtube",
     "src": "https://youtu.be/Up4L2wYsorI?si=Sa7spiLg1DjJTpjS",
     "title": "彈性骨骼外挂 (blender)",
-    "description": "彈性骨骼外挂工具。"
+    "art_need": "美術團隊需要為角色添加彈性骨骼，以實現更自然的運動效果。",
+    "my_solution": "使用 Blender 開發了一套彈性骨骼外挂工具。美術師只需要在角色模型上添加一組骨骼，並設定彈性參數，即可實現角色在運動時的彈性效果。",
+    "impact": "為角色添加彈性骨骼後，角色在運動時的動作更加自然，並且能夠更好地模擬物理效果，提升了角色的互動性和 realism。"
   }
 ]
