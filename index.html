@@ -146,14 +146,22 @@
       overflow: hidden; /* Add this */
     }
 
-    .portfolio-image img {
+    .portfolio-image img,
+    .portfolio-image video {
       width: 100%;
       height: 100%;
       object-fit: cover; /* Add this */
       transition: transform 0.3s ease; /* Add this for a subtle hover effect */
     }
 
-    .portfolio-item:hover .portfolio-image img {
+    .portfolio-image iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .portfolio-item:hover .portfolio-image img,
+    .portfolio-item:hover .portfolio-image video {
         transform: scale(1.05); /* Add a subtle zoom on hover */
     }
     .portfolio-description {
@@ -300,12 +308,30 @@
             const portfolioItem = document.createElement('div');
             portfolioItem.classList.add('portfolio-item');
 
-            const portfolioImage = document.createElement('div');
-            portfolioImage.classList.add('portfolio-image');
-            const image = document.createElement('img');
-            image.src = item.image;
-            image.alt = item.title;
-            portfolioImage.appendChild(image);
+            const mediaContainer = document.createElement('div');
+            mediaContainer.classList.add('portfolio-image');
+
+            let mediaElement;
+            if (item.provider === 'youtube') {
+              mediaElement = document.createElement('iframe');
+              mediaElement.src = item.src;
+              mediaElement.setAttribute('frameborder', '0');
+              mediaElement.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+              mediaElement.setAttribute('allowfullscreen', '');
+            } else if (item.type === 'video') {
+              mediaElement = document.createElement('video');
+              mediaElement.src = item.src;
+              mediaElement.autoplay = true;
+              mediaElement.loop = true;
+              mediaElement.muted = true; // Important for autoplay in most browsers
+              mediaElement.playsInline = true;
+            } else {
+              mediaElement = document.createElement('img');
+              mediaElement.src = item.src;
+              mediaElement.alt = item.title;
+            }
+
+            mediaContainer.appendChild(mediaElement);
 
             const portfolioDescription = document.createElement('div');
             portfolioDescription.classList.add('portfolio-description');
@@ -316,7 +342,7 @@
             portfolioDescription.appendChild(title);
             portfolioDescription.appendChild(description);
 
-            portfolioItem.appendChild(portfolioImage);
+            portfolioItem.appendChild(mediaContainer);
             portfolioItem.appendChild(portfolioDescription);
 
             portfolioContainer.appendChild(portfolioItem);
