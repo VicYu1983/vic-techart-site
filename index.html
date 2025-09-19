@@ -21,16 +21,6 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    @keyframes fade-in-up {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
     body {
       font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
       margin: 0;
@@ -39,35 +29,40 @@
       background-color: var(--background-color);
       color: var(--text-color);
     }
+    body.mobile-nav-open {
+        overflow: hidden;
+    }
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
     header {
-      background: var(--surface-color);
-      color: var(--text-color);
-      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
       text-align: center;
       border-bottom: 1px solid var(--light-gray);
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 1000;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 1.8em;
       color: var(--primary-color);
-    }
-    header .subtitle {
-      font-size: 1.2em;
-      color: var(--secondary-color);
-      margin-top: 10px;
+      text-align: left;
     }
     nav {
-      margin-top: 20px;
+      display: flex;
     }
     nav a {
       color: var(--primary-color);
@@ -75,9 +70,38 @@
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
     nav a:hover {
       color: var(--primary-hover);
+    }
+    #mobile-nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+    }
+    #mobile-nav-toggle .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: var(--primary-color);
+        border-radius: 1px;
+        transition: all 0.3s ease-in-out;
+    }
+    #mobile-nav-toggle .icon-bar + .icon-bar {
+        margin-top: 4px;
+    }
+    body.mobile-nav-open #mobile-nav-toggle .icon-bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    body.mobile-nav-open #mobile-nav-toggle .icon-bar:nth-child(2) {
+        opacity: 0;
+    }
+    body.mobile-nav-open #mobile-nav-toggle .icon-bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
     }
     .hero {
       color: var(--white);
@@ -191,24 +215,6 @@
     .portfolio-description {
       width: 50%;
     }
-    .fees-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    .fees-table th, .fees-table td {
-      border: 1px solid var(--light-gray);
-      padding: 12px 15px;
-      text-align: left;
-    }
-    .fees-table thead th {
-      background-color: var(--primary-color);
-      color: var(--white);
-      font-weight: 600;
-    }
-    .fees-table tbody tr:nth-child(even) {
-      background-color: var(--background-color);
-    }
     #contact {
       background: var(--primary-color);
       color: var(--white);
@@ -224,7 +230,7 @@
       background: #343a40;
       color: var(--white);
       text-align: center;
-      padding: 40px 0;
+      padding: 40px 20px;
       margin-top: 0;
     }
     footer a {
@@ -232,7 +238,7 @@
       text-decoration: none;
     }
     .social-links {
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
     .social-links a {
         margin: 0 10px;
@@ -256,22 +262,77 @@
         opacity: 1;
         transform: translateY(0);
     }
-    @media (max-width: var(--breakpoint-md)) {
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      #mobile-nav-toggle {
+        display: block;
+      }
+      #main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease-in-out;
+      }
+      body.mobile-nav-open #main-nav {
+        left: 0;
+      }
+      #main-nav a {
+        font-size: 1.5em;
+        margin: 20px 0;
+      }
+      .hero {
+        padding: 60px 20px;
+      }
+      .hero h2 {
+        font-size: 2.2em;
+      }
+      .hero p {
+        font-size: 1.1em;
+      }
+      section {
+        padding: 60px 20px;
+      }
+      .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+      }
+      .card {
+        width: 90%;
+        min-width: unset;
+      }
       .portfolio-item, .portfolio-item:nth-child(even) {
         flex-direction: column;
+        padding: 20px;
       }
       .portfolio-image, .portfolio-description {
         width: 100%;
+      }
+      .portfolio-description {
+        margin-top: 20px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="header-container">
       <h1>Vic 技術美術支援</h1>
-      <p class="subtitle">專注於 3D 工具開發與流程優化，提升您的團隊生產力</p>
-      <nav>
+      <button id="mobile-nav-toggle" aria-label="Toggle Menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <nav id="main-nav">
         <a href="#services">服務內容</a>
         <a href="#process">合作流程</a>
         <a href="#fees">費用估算</a>
@@ -420,13 +481,32 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </a>
       </div>
-      <p style="margin-top: 20px;">由 Gemini 協助設計 | &copy; 2024 Vic's Technical Art Services</p>
+      <p>由 Gemini 協助設計 | &copy; 2024 Vic's Technical Art Services</p>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Scroll Animation
+      // --- Mobile Navigation ---
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const mainNav = document.getElementById('main-nav');
+
+      if (navToggle) {
+        navToggle.addEventListener('click', function() {
+          document.body.classList.toggle('mobile-nav-open');
+        });
+      }
+      
+      // Close mobile nav when a link is clicked
+      if (mainNav) {
+          mainNav.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', () => {
+                  document.body.classList.remove('mobile-nav-open');
+              });
+          });
+      }
+
+      // --- Scroll Animation ---
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -442,19 +522,13 @@
       });
 
       // --- Portfolio Loading (kept for future use) ---
-      // The code below is commented out because we've added static examples.
-      // You can uncomment it when you are ready to use portfolio.json again.
       /*
       const portfolioContainer = document.getElementById('portfolio-container');
-      if (portfolioContainer.children.length === 0) { // Only fetch if empty
+      if (portfolioContainer.children.length === 0) { 
           fetch('portfolio.json')
             .then(response => response.json())
             .then(data => {
-              data.forEach(item => {
-                const portfolioItem = document.createElement('div');
-                portfolioItem.classList.add('portfolio-item');
-                // ... (rest of the dynamic creation logic)
-              });
+              // ...
             })
             .catch(error => console.error('Error loading portfolio:', error));
       }
