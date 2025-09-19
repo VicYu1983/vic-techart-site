@@ -490,6 +490,9 @@
             <p style="color: var(--secondary-color); margin-top: -15px;">(約 44,000/月)</p>
           </div>
         </div>
+        <div class="reveal-on-scroll" style="text-align: center; margin-top: 40px; color: var(--secondary-color);">
+          <p><strong>請注意：</strong>專案可能需要的正版軟體 (如 Maya, Houdini 等) 授權費用需另計。</p>
+        </div>
       </div>
     </section>
 
@@ -497,24 +500,7 @@
       <div class="container">
         <h2 class="section-title reveal-on-scroll">精選案例</h2>
         <div id="portfolio-container">
-          <div class="portfolio-item reveal-on-scroll">
-            <div class="portfolio-image video-embed">
-              <iframe src="https://www.youtube.com/embed/Ki_l_q_c9H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="portfolio-description">
-              <h3>Houdini 程序化建模與特效</h3>
-              <p>此專案展示了使用 Houdini 進行複雜的程序化建模、動態模擬與視覺特效製作。從建築生成到粒子系統，充分展現了程序化流程在節省時間與提升創意上的巨大潛力。</p>
-            </div>
-          </div>
-          <div class="portfolio-item reveal-on-scroll">
-            <div class="portfolio-image">
-              <img src="images/project-b.png" alt="專案 B">
-            </div>
-            <div class="portfolio-description">
-              <h3>客製化 Maya 工具開發</h3>
-              <p>為動畫團隊開發了一套角色綁定 (Rigging) 自動化工具。藝術家只需定義好骨骼結構，工具即可一鍵生成完整的控制器、IK/FK 切換以及臉部表情設定，節省了 80% 以上的手動綁定時間。</p>
-            </div>
-          </div>
+          <!-- Portfolio items will be loaded here dynamically -->
         </div>
       </div>
     </section>
@@ -527,29 +513,17 @@
             <div class="about-details">
                 <div class="about-column">
                     <h3>主要經歷</h3>
-                    <p>北京九鳳</p>
-                    <p>游戲夢工場</p>
+                    <p>北京九鳳 (技術美術, 6年)</p>
                 </div>
                 <div class="about-column">
-                    <h3>涉略軟體</h3>
+                    <h3>熟悉工具</h3>
                     <ul>
-                        <li>Unreal</li>
-                        <li>Unity</li>
-                        <li>Cocos Creator</li>
-                        <li>3ds Max</li>
                         <li>Maya</li>
-                        <li>Blender</li>
-                        <li>Photoshop</li>
-                    </ul>
-                </div>
-                <div class="about-column">
-                    <h3>涉略語言</h3>
-                    <ul>
+                        <li>3ds Max</li>
+                        <li>Unity</li>
+                        <li>Unreal Engine</li>
+                        <li>Cocos Creator</li>
                         <li>Python</li>
-                        <li>Maya MEL</li>
-                        <li>Max Script</li>
-                        <li>C#</li>
-                        <li>TypeScript</li>
                     </ul>
                 </div>
             </div>
@@ -594,7 +568,6 @@
         });
       }
       
-      // Close mobile nav when a link is clicked
       if (mainNav) {
           mainNav.querySelectorAll('a').forEach(link => {
               link.addEventListener('click', () => {
@@ -618,18 +591,104 @@
         observer.observe(elem);
       });
 
-      // --- Portfolio Loading (kept for future use) ---
-      /*
-      const portfolioContainer = document.getElementById('portfolio-container');
-      if (portfolioContainer.children.length === 0) { 
-          fetch('portfolio.json')
-            .then(response => response.json())
-            .then(data => {
-              // ...
-            })
-            .catch(error => console.error('Error loading portfolio:', error));
+      // --- Portfolio Loading ---
+      function getYouTubeEmbedUrl(url) {
+        let videoId = null;
+        try {
+          const urlObj = new URL(url);
+          if (urlObj.hostname === 'youtu.be') {
+            videoId = urlObj.pathname.slice(1);
+          } else if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
+            videoId = urlObj.searchParams.get('v');
+            if (!videoId) {
+                const parts = urlObj.pathname.split('/');
+                if(parts[1] === 'embed') videoId = parts[2];
+            }
+          }
+        } catch (e) { /* Ignore invalid URLs */ }
+        
+        if (!videoId) {
+            const parts = url.split('/');
+            videoId = parts.pop().split('?')[0];
+        }
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
       }
-      */
+
+      const portfolioContainer = document.getElementById('portfolio-container');
+      
+      fetch('portfolio.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+          if(!data || data.length === 0) {
+              portfolioContainer.innerHTML = '<p style="text-align:center; color: var(--secondary-color);">目前尚無精選案例。</p>';
+              return;
+          }
+
+          data.forEach(item => {
+            const portfolioItem = document.createElement('div');
+            portfolioItem.classList.add('portfolio-item', 'reveal-on-scroll');
+
+            const mediaContainer = document.createElement('div');
+            mediaContainer.classList.add('portfolio-image');
+
+            let mediaElement;
+            if (item.provider === 'youtube') {
+              mediaContainer.classList.add('video-embed');
+              mediaElement = document.createElement('iframe');
+              mediaElement.src = getYouTubeEmbedUrl(item.src);
+              mediaElement.title = item.title || 'YouTube video player';
+              mediaElement.setAttribute('frameborder', '0');
+              mediaElement.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+              mediaElement.setAttribute('allowfullscreen', '');
+            } else if (item.type === 'video') {
+              mediaElement = document.createElement('video');
+              mediaElement.src = item.src;
+              mediaElement.autoplay = true;
+              mediaElement.loop = true;
+              mediaElement.muted = true;
+              mediaElement.playsInline = true;
+            } else {
+              mediaElement = document.createElement('img');
+              mediaElement.src = item.src;
+              mediaElement.alt = item.title || 'Portfolio image';
+            }
+
+            mediaContainer.appendChild(mediaElement);
+
+            const portfolioDescription = document.createElement('div');
+            portfolioDescription.classList.add('portfolio-description');
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+            const description = document.createElement('p');
+            description.textContent = item.description;
+            portfolioDescription.appendChild(title);
+            portfolioDescription.appendChild(description);
+
+            // Ensure the order is correct based on item index
+            if (portfolioContainer.children.length % 2 !== 0) {
+                portfolioItem.appendChild(portfolioDescription);
+                portfolioItem.appendChild(mediaContainer);
+            } else {
+                portfolioItem.appendChild(mediaContainer);
+                portfolioItem.appendChild(portfolioDescription);
+            }
+
+            portfolioContainer.appendChild(portfolioItem);
+          });
+          
+          document.querySelectorAll('#portfolio-container .reveal-on-scroll').forEach(elem => {
+            observer.observe(elem);
+          });
+        })
+        .catch(error => {
+            console.error('Error loading portfolio:', error);
+            portfolioContainer.innerHTML = '<p style="text-align:center; color: #d9534f;">讀取作品集時發生錯誤，請稍後再試。</p>';
+        });
     });
   </script>
 </body>
