@@ -1,15 +1,9 @@
 [
   {
-    "type": "image",
-    "src": "images/project-a.png",
-    "title": "自動化綁定工具 (Maya)",
-    "description": "為某遊戲工作室開發了一套模組化的自動綁定工具，將角色綁定時間從 2 天縮短至 1 小時，大幅提升了角色產製速度。"
-  },
-  {
     "type": "video",
     "provider": "youtube",
-    "src": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "title": "Houdini 數位資產庫",
-    "description": "協助動畫團隊建立了一套 Houdini Engine 數位資產庫，讓特效師能在 Maya/Unreal Engine 中快速生成複雜特效，簡化了跨軟體協作流程。"
+    "src": "https://youtu.be/FQ2pSbBU0vg?si=cxMCvb0XzPtmW6wv",
+    "title": "程序化房屋工具 (Unreal)",
+    "description": "為某遊戲工作室開發了一套模組化的自動綁定工具，將角色綁定時間從 2 天縮短至 1 小時，大幅提升了角色產製速度。"
   }
 ]

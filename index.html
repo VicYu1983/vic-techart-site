@@ -226,10 +226,27 @@
     .portfolio-description {
       width: 50%;
     }
+    #about .container {
+        text-align: center;
+    }
     #about .about-intro {
-        text-align: center; 
         max-width: 800px; 
-        margin: 0 auto 50px auto;
+        margin: 0 auto 40px auto;
+    }
+    .about-portfolio-button {
+        display: inline-block;
+        margin-bottom: 50px;
+        padding: 12px 25px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    .about-portfolio-button:hover {
+        background-color: var(--primary-hover);
+        transform: scale(1.05);
     }
     .about-details {
         display: flex;
@@ -473,9 +490,6 @@
             <p style="color: var(--secondary-color); margin-top: -15px;">(約 44,000/月)</p>
           </div>
         </div>
-        <div class="reveal-on-scroll" style="text-align: center; margin-top: 40px; color: var(--secondary-color);">
-          <p><strong>請注意：</strong>專案可能需要的正版軟體 (如 Maya, Houdini 等) 授權費用需另計。</p>
-        </div>
       </div>
     </section>
 
@@ -509,6 +523,7 @@
         <div class="container reveal-on-scroll">
             <h2 class="section-title">關於 Vic</h2>
             <p class="about-intro">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
+            <a href="https://github.com/VicYu1983/profile" target="_blank" class="about-portfolio-button reveal-on-scroll">查看完整作品集</a>
             <div class="about-details">
                 <div class="about-column">
                     <h3>主要經歷</h3>
