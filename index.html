@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vic 技術美術支援服務 | 專業 3D 流程優化</title>
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --background-color: #f8f9fa;
+      --text-color: #343a40;
+      --light-gray: #e9ecef;
+      --white: #ffffff;
+      --breakpoint-md: 768px;
+    }
+    body {
+      font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background: var(--white);
+      color: var(--text-color);
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: var(--primary-color);
+    }
+    header .subtitle {
+      font-size: 1.2em;
+      color: var(--secondary-color);
+      margin-top: 10px;
+    }
+    nav {
+      margin-top: 20px;
+    }
+    nav a {
+      color: var(--primary-color);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #0056b3;
+    }
+    .hero {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: var(--white);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 3em;
+      margin: 0 0 20px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    .cta-button {
+      background-color: var(--white);
+      color: var(--primary-color);
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+    section {
+      padding: 60px 0;
+    }
+    section:nth-child(even) {
+      background-color: var(--white);
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 50px;
+      color: var(--primary-color);
+    }
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 30px;
+      width: 30%;
+      min-width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      font-size: 1.8em;
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+    .portfolio-item {
+      margin-bottom: 40px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    .portfolio-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .portfolio-image {
+      width: 50%;
+      height: 300px;
+      background-color: var(--light-gray);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-style: italic;
+      color: var(--secondary-color);
+      overflow: hidden; /* Add this */
+    }
+
+    .portfolio-image img,
+    .portfolio-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Add this */
+      transition: transform 0.3s ease; /* Add this for a subtle hover effect */
+    }
+
+    .portfolio-image iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .portfolio-item:hover .portfolio-image img,
+    .portfolio-item:hover .portfolio-image video {
+        transform: scale(1.05); /* Add a subtle zoom on hover */
+    }
+    .portfolio-description {
+      width: 50%;
+    }
+
+    .fees-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .fees-table th, .fees-table td {
+      border: 1px solid var(--light-gray);
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .fees-table thead th {
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .fees-table tbody tr:nth-child(even) {
+      background-color: var(--background-color);
+    }
+    #contact {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+    #contact .section-title, #contact a {
+      color: var(--white);
+    }
+    #contact p {
+      text-align: center;
+      font-size: 1.2em;
+    }
+    footer {
+      background: #343a40;
+      color: var(--white);
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 0;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    @media (max-width: var(--breakpoint-md)) {
+      .portfolio-item, .portfolio-item:nth-child(even) {
+        flex-direction: column;
+      }
+      .portfolio-image, .portfolio-description {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Vic 技術美術支援</h1>
+      <p class="subtitle">專注於 3D 工具開發與流程優化，提升您的團隊生產力</p>
+      <nav>
+        <a href="#services">服務內容</a>
+        <a href="#process">合作流程</a>
+        <a href="#fees">費用估算</a>
+        <a href="#portfolio">作品集</a>
+        <a href="#about">關於我</a>
+        <a href="#contact">立即諮詢</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>解放您的創意，讓技術問題成為過去</h2>
+      <p>提供每日 4 小時的穩定技術支援，協助您的團隊解決 3ds Max, Maya, Houdini 中的技術難題，讓藝術家專注於創作。</p>
+      <a href="#contact" class="cta-button">開始合作</a>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">核心服務</h2>
+        <div class="card-container">
+          <div class="card">
+            <h3>工具開發</h3>
+            <p>根據您的特定需求，開發客製化的 3D 軟體工具與腳本，自動化繁瑣任務，提升工作效率。</p>
+          </div>
+          <div class="card">
+            <h3>流程優化</h3>
+            <p>分析您現有的工作流程，找出瓶頸並提出改進方案，導入更高效的技術與方法。</p>
+          </div>
+          <div class="card">
+            <h3>即時技術支援</h3>
+            <p>每日提供線上支援，快速解決團隊在 3D 軟體操作、腳本錯誤、或流程整合上遇到的問題。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">合作流程</h2>
+        <div class="card-container">
+          <div class="card">
+            <h3>初步諮詢</h3>
+            <p>透過郵件或線上會議，了解您的需求、挑戰與目標。</p>
+          </div>
+          <div class="card">
+            <h3>方案制定</h3>
+            <p>根據您的需求，提供一份詳細的合作方案與時程規劃。</p>
+          </div>
+          <div class="card">
+            <h3>簽訂合約</h3>
+            <p>以一年合約制進行合作，保障雙方權益與長期穩定的支援。</p>
+          </div>
+           <div class="card">
+            <h3>日常支援</h3>
+            <p>每日 4 小時在線，透過即時通訊或遠端桌面提供技術支援。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees">
+      <div class="container">
+        <h2 class="section-title">費用方案</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div class="card" style="width: auto; max-width: 500px; margin: 0 auto;">
+                <h3>全年技術支援與工具整合服務</h3>
+                <p>此為一站式解決方案，提供每日 4 小時的專家級技術支援，並使用最新、最穩定的正版授權軟體 (Maya, 3ds Max, Houdini) 進行開發，確保您的專案品質與效率。</p>
+                <p style="font-size: 2em; color: var(--primary-color); font-weight: bold; margin-top: 20px;">年費 60 萬台幣</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title">精選案例</h2>
+        <div id="portfolio-container">
+          <!-- Portfolio items will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">關於 Vic</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
+        </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">準備好提升您的工作流程了嗎？</h2>
+        <p>立即透過 Email 與我聯繫，讓我們聊聊您的需求。</p>
+        <p><a href="mailto:finalsteve@gmail.com">finalsteve@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>由 <a href="https://gemini.google.com/">Gemini</a> 協助設計</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const portfolioContainer = document.getElementById('portfolio-container');
+
+      fetch('portfolio.json')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(item => {
+            const portfolioItem = document.createElement('div');
+            portfolioItem.classList.add('portfolio-item');
+
+            const mediaContainer = document.createElement('div');
+            mediaContainer.classList.add('portfolio-image');
+
+            let mediaElement;
+            if (item.provider === 'youtube') {
+              mediaElement = document.createElement('iframe');
+              mediaElement.src = item.src;
+              mediaElement.setAttribute('frameborder', '0');
+              mediaElement.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+              mediaElement.setAttribute('allowfullscreen', '');
+            } else if (item.type === 'video') {
+              mediaElement = document.createElement('video');
+              mediaElement.src = item.src;
+              mediaElement.autoplay = true;
+              mediaElement.loop = true;
+              mediaElement.muted = true; // Important for autoplay in most browsers
+              mediaElement.playsInline = true;
+            } else {
+              mediaElement = document.createElement('img');
+              mediaElement.src = item.src;
+              mediaElement.alt = item.title;
+            }
+
+            mediaContainer.appendChild(mediaElement);
+
+            const portfolioDescription = document.createElement('div');
+            portfolioDescription.classList.add('portfolio-description');
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+            const description = document.createElement('p');
+            description.textContent = item.description;
+            portfolioDescription.appendChild(title);
+            portfolioDescription.appendChild(description);
+
+            portfolioItem.appendChild(mediaContainer);
+            portfolioItem.appendChild(portfolioDescription);
+
+            portfolioContainer.appendChild(portfolioItem);
+          });
+        })
+        .catch(error => console.error('Error loading portfolio:', error));
+    });
+  </script>
+</body>
+</html>
