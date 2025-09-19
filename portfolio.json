@@ -4,6 +4,13 @@
     "provider": "youtube",
     "src": "https://youtu.be/FQ2pSbBU0vg?si=cxMCvb0XzPtmW6wv",
     "title": "程序化房屋工具 (Unreal)",
-    "description": "為某遊戲工作室開發了一套模組化的自動綁定工具，將角色綁定時間從 2 天縮短至 1 小時，大幅提升了角色產製速度。"
+    "description": "程序化房屋工具，能夠快速生成各種不同的房屋模型，節省了設計師的時間和精力。"
+  },
+  {
+    "type": "video",
+    "provider": "youtube",
+    "src": "https://youtu.be/Up4L2wYsorI?si=Sa7spiLg1DjJTpjS",
+    "title": "彈性骨骼外挂 (blender)",
+    "description": "彈性骨骼外挂工具。"
   }
 ]
