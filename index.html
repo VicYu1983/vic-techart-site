@@ -167,6 +167,28 @@
     .portfolio-description {
       width: 50%;
     }
+
+    .fees-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .fees-table th, .fees-table td {
+      border: 1px solid var(--light-gray);
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .fees-table thead th {
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .fees-table tbody tr:nth-child(even) {
+      background-color: var(--background-color);
+    }
     #contact {
       background: var(--primary-color);
       color: var(--white);
@@ -207,6 +229,7 @@
       <nav>
         <a href="#services">服務內容</a>
         <a href="#process">合作流程</a>
+        <a href="#fees">費用估算</a>
         <a href="#portfolio">作品集</a>
         <a href="#about">關於我</a>
         <a href="#contact">立即諮詢</a>
@@ -261,6 +284,21 @@
             <h3>日常支援</h3>
             <p>每日 4 小時在線，透過即時通訊或遠端桌面提供技術支援。</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees">
+      <div class="container">
+        <h2 class="section-title">費用方案</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div class="card" style="width: auto; max-width: 500px; margin: 0 auto;">
+                <h3>整合技術服務年費</h3>
+                <p>此方案包含每日 4 小時的技術支援，以及所需 3D 軟體 (Maya, 3ds Max, Houdini) 的授權費用。</p>
+                <p>透過獨特的成本分攤模式，我將同時為另外兩家公司提供服務，您的軟體授權費用將由三方共同分攤，大幅降低您的成本。</p>
+                <p style="font-size: 2em; color: var(--primary-color); font-weight: bold; margin-top: 20px;">年費 59.7 萬台幣</p>
+                <p style="font-size: 0.9em; color: var(--secondary-color);">(技術服務費 50 萬 + 軟體授權分攤 9.7 萬)</p>
+            </div>
         </div>
       </div>
     </section>
