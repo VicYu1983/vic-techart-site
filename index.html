@@ -143,6 +143,18 @@
       justify-content: center;
       font-style: italic;
       color: var(--secondary-color);
+      overflow: hidden; /* Add this */
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Add this */
+      transition: transform 0.3s ease; /* Add this for a subtle hover effect */
+    }
+
+    .portfolio-item:hover .portfolio-image img {
+        transform: scale(1.05); /* Add a subtle zoom on hover */
     }
     .portfolio-description {
       width: 50%;
@@ -248,19 +260,8 @@
     <section id="portfolio">
       <div class="container">
         <h2 class="section-title">精選案例</h2>
-        <div class="portfolio-item">
-          <div class="portfolio-image"><span>專案圖片 A</span></div>
-          <div class="portfolio-description">
-            <h3>自動化綁定工具 (Maya)</h3>
-            <p>為某遊戲工作室開發了一套模組化的自動綁定工具，將角色綁定時間從 2 天縮短至 1 小時，大幅提升了角色產製速度。</p>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-image"><span>專案圖片 B</span></div>
-          <div class="portfolio-description">
-            <h3>Houdini 數位資產庫</h3>
-            <p>協助動畫團隊建立了一套 Houdini Engine 數位資產庫，讓特效師能在 Maya/Unreal Engine 中快速生成複雜特效，簡化了跨軟體協作流程。</p>
-          </div>
+        <div id="portfolio-container">
+          <!-- Portfolio items will be loaded here -->
         </div>
       </div>
     </section>
@@ -287,5 +288,42 @@
       <p>由 <a href="https://gemini.google.com/">Gemini</a> 協助設計</p>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const portfolioContainer = document.getElementById('portfolio-container');
+
+      fetch('portfolio.json')
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(item => {
+            const portfolioItem = document.createElement('div');
+            portfolioItem.classList.add('portfolio-item');
+
+            const portfolioImage = document.createElement('div');
+            portfolioImage.classList.add('portfolio-image');
+            const image = document.createElement('img');
+            image.src = item.image;
+            image.alt = item.title;
+            portfolioImage.appendChild(image);
+
+            const portfolioDescription = document.createElement('div');
+            portfolioDescription.classList.add('portfolio-description');
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+            const description = document.createElement('p');
+            description.textContent = item.description;
+            portfolioDescription.appendChild(title);
+            portfolioDescription.appendChild(description);
+
+            portfolioItem.appendChild(portfolioImage);
+            portfolioItem.appendChild(portfolioDescription);
+
+            portfolioContainer.appendChild(portfolioItem);
+          });
+        })
+        .catch(error => console.error('Error loading portfolio:', error));
+    });
+  </script>
 </body>
 </html>
