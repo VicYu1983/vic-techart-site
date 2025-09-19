@@ -189,7 +189,7 @@
       gap: 30px;
       align-items: center;
       background-color: var(--surface-color);
-      padding: 30px;
+      padding: 20px 30px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
@@ -197,7 +197,7 @@
       flex-direction: row-reverse;
     }
     .portfolio-image {
-      width: 50%;
+      width: 40%;
       border-radius: 8px;
       overflow: hidden;
     }
@@ -224,7 +224,7 @@
       border: 0;
     }
     .portfolio-description {
-      width: 50%;
+      width: 60%;
     }
     #about .container {
         text-align: center;
@@ -281,6 +281,43 @@
         position: absolute;
         left: 0;
         font-weight: bold;
+    }
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .faq-item {
+        border-bottom: 1px solid var(--light-gray);
+    }
+    .faq-item summary {
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 20px 0;
+        cursor: pointer;
+        position: relative;
+        padding-right: 30px;
+        list-style: none; /* Remove default marker */
+    }
+    .faq-item summary::-webkit-details-marker {
+        display: none; /* Hide marker in WebKit */
+    }
+    .faq-item summary::after {
+        content: '+';
+        font-size: 1.5em;
+        color: var(--primary-color);
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+        transform: translateY(-50%) rotate(45deg);
+    }
+    .faq-item .faq-content {
+        padding: 0 10px 20px 10px;
+        color: var(--secondary-color);
+        line-height: 1.9;
     }
     #contact {
       background: var(--primary-color);
@@ -412,6 +449,7 @@
         <a href="#fees">費用估算</a>
         <a href="#portfolio">作品集</a>
         <a href="#about">關於我</a>
+        <a href="#faq">常見問題</a>
         <a href="#contact">立即諮詢</a>
       </nav>
     </div>
@@ -508,7 +546,7 @@
     <section id="about">
         <div class="container reveal-on-scroll">
             <h2 class="section-title">關於 Vic</h2>
-            <p class="about-intro">一直都在玩和美術相關的技術，包括游戲前端，游戲特效，游戲shader。由3d動畫師一步一步轉型到游戲客戶端和網頁前端，再回到技術美術。比較瞭解游戲製作的大部分流程，能比較好的和各種職位的人溝通。在公司時，處理了大部分和骨架相關的問題。其中寫過maya python/ maya mel, max script/ python等，也幫公司處理程序化生成的相關技術。自己在外包期間，開發很多blender工具， 包含程序化生成，shader等，讓相關經驗得以增長。</p>
+            <p class="about-intro">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
             <a href="https://github.com/VicYu1983/profile" target="_blank" class="about-portfolio-button reveal-on-scroll">查看完整作品集</a>
             <div class="about-details">
                 <div class="about-column">
@@ -542,6 +580,38 @@
         </div>
     </section>
 
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title reveal-on-scroll">常見問題</h2>
+        <div class="faq-container">
+          <details class="faq-item reveal-on-scroll">
+            <summary>Q1:「每日 4 小時」的服務時間是如何安排的？</summary>
+            <div class="faq-content">
+              <p>A: 服務時間可依據您團隊的需求進行協調。我們可以在固定的 4 小時區塊內合作（例如，下午 2-6 點），也可以根據專案的緊急程度彈性安排。我的主要工作時區為 GMT+8，但非常樂意配合您的時區，找到對雙方最有效率的溝通模式。</p>
+            </div>
+          </details>
+          <details class="faq-item reveal-on-scroll">
+            <summary>Q2: 在非服務時段有緊急問題怎麼辦？</summary>
+            <div class="faq-content">
+              <p>A: 我理解專案的突發狀況。在非約定服務時段，您可以隨時透過郵件或即時通訊留下問題。我會盡力在最短時間內回覆，並在下一個工作時段開始時優先處理。對於會造成嚴重阻塞的緊急問題，我們可以另外協調應對方案。</p>
+            </div>
+          </details>
+          <details class="faq-item reveal-on-scroll">
+            <summary>Q3: 如果您休假或生病，服務會中斷嗎？</summary>
+            <div class="faq-content">
+              <p>A: 作為獨立顧問，我會將服務的穩定性放在首位。對於計劃性休假，我會提前至少一個月與您溝通，並協調補償方案（例如順延合約或按比例退款）。若遇臨時狀況，也會在恢復工作後第一時間補足服務時數，確保您的權益。</p>
+            </div>
+          </details>
+          <details class="faq-item reveal-on-scroll">
+            <summary>Q4: 這 4 小時是專屬於我一個客戶的服務嗎？</summary>
+            <div class="faq-content">
+              <p>A: 為了提供最高品質的服務，我會限制同時合作的客戶數量。您所訂閱的「每日 4 小時」代表我為您的專案投入的專注工作時間，用於開發、研究和解決問題。這確保了每個專案都能獲得足夠的專家精力與深度支持。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="container reveal-on-scroll">
         <h2 class="section-title">準備好提升您的工作流程了嗎？</h2>
@@ -553,6 +623,17 @@
 
   <footer>
     <div class="container">
+      <div class="social-links">
+        <a href="#" title="LinkedIn" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-4.125 0 2.062 2.062 0 014.125 0zM7.142 20.452H3.555V9h3.587v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </a>
+        <a href="#" title="ArtStation" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.35 11.31l10.34-2.43 5.43 12.84-10.3-2.4zM22.65 8.89L12.31 11.3l-5.47-12.84 10.31 2.43zM11.1 0L0 2.59l5.45 12.87L16.55 2.59z"/></svg>
+        </a>
+        <a href="#" title="GitHub" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      </div>
       <p>由 Gemini 協助設計 | &copy; 2024 Vic's Technical Art Services</p>
     </div>
   </footer>
@@ -670,14 +751,8 @@
             portfolioDescription.appendChild(title);
             portfolioDescription.appendChild(description);
 
-            // Ensure the order is correct based on item index
-            if (portfolioContainer.children.length % 2 !== 0) {
-                portfolioItem.appendChild(portfolioDescription);
-                portfolioItem.appendChild(mediaContainer);
-            } else {
-                portfolioItem.appendChild(mediaContainer);
-                portfolioItem.appendChild(portfolioDescription);
-            }
+            portfolioItem.appendChild(mediaContainer);
+            portfolioItem.appendChild(portfolioDescription);
 
             portfolioContainer.appendChild(portfolioItem);
           });
