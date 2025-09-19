@@ -16,5 +16,14 @@
     "art_need": "美術團隊需要為角色添加彈性骨骼，以實現更自然的運動效果。",
     "my_solution": "使用 Blender 開發了一套彈性骨骼外挂工具。美術師只需要在角色模型上添加一組骨骼，並設定彈性參數，即可實現角色在運動時的彈性效果。",
     "impact": "為角色添加彈性骨骼後，角色在運動時的動作更加自然，並且能夠更好地模擬物理效果，提升了角色的互動性和 realism。"
-  }
+  },
+  {
+      "type": "image",
+      "provider": null,
+      "src": "https://vicyu1983.github.io/profile/assets/rerangeAnimation.gif",
+      "title": "動畫重排工具(Maya)",
+      "art_need": "動畫師需要快速的生成自動銜接各種動作并且輸出的工具",
+      "my_solution": "使用 Python 和 PySide2 開發了一套完整的 UI 工具，結合骨骼的自動插值運算，重新整理出新的動畫幀。",
+      "impact": "將過去需要好幾個小時的人工流程，轉爲工具化的自動流程，節省了大量的時間和精力，並且確保了動畫的質量。"
+    }
 ]
