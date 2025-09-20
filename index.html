@@ -55,10 +55,28 @@
         margin: 0 auto;
         padding: 0 20px;
     }
-    header h1 {
+    .site-identity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header-logo {
+      height: 45px;
+      display: block;
+      border-radius: 10px;
+    }
+    .site-identity .site-title {
       margin: 0;
       font-size: 1.8em;
       color: var(--primary-color);
+      text-align: left;
+      line-height: 1.1;
+    }
+    .site-identity .site-slogan {
+      margin: 2px 0 0 0;
+      font-size: 0.9em;
+      color: var(--secondary-color);
+      font-style: italic;
       text-align: left;
     }
     nav {
@@ -481,7 +499,13 @@
 <body>
   <header>
     <div class="header-container">
-      <h1>Vic 技術美術支援</h1>
+      <div class="site-identity">
+        <a href="index.html"><img src="images/logo.png" alt="Site Logo" class="header-logo"></a>
+        <div>
+          <h1 class="site-title">Vic 技術美術支援</h1>
+          <p class="site-slogan">技術與藝術的交會點</p>
+        </div>
+      </div>
       <button id="mobile-nav-toggle" aria-label="Toggle Menu">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
