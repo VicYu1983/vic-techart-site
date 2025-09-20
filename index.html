@@ -405,6 +405,26 @@
         border-radius: 8px;
         border: 4px solid var(--white);
     }
+    .contact-social-link {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--white);
+        transition: transform 0.3s;
+    }
+    .contact-social-link:hover {
+        transform: scale(1.05);
+    }
+    .contact-social-icon {
+        width: 80px;
+        height: 80px;
+        fill: var(--white);
+        margin-bottom: 10px;
+    }
+    .contact-social-link p {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin: 0;
+    }
     footer {
       background: #343a40;
       color: var(--white);
@@ -700,8 +720,12 @@
         <p>您可以透過以下方式與我聯繫，讓我們聊聊您的需求。</p>
         <div class="contact-methods">
           <div class="contact-option">
-            <h4>LINE</h4>
-            <img src="images/line.jpg" alt="LINE QR Code">
+            <a href="https://www.facebook.com/profile.php?id=61581095433755" target="_blank" aria-label="Facebook" class="contact-social-link">
+              <svg class="contact-social-icon" viewBox="0 0 24 24">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+              </svg>
+              <p>前往 Facebook 專頁</p>
+            </a>
           </div>
         </div>
       </div>
@@ -711,6 +735,8 @@
 
   <footer>
     <div class="container">
+      <div class="social-links">
+      </div>
       <p>由 Gemini 協助設計 | &copy; 2024 Vic Tech Art Studio</p>
     </div>
   </footer>
