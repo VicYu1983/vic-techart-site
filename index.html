@@ -470,6 +470,32 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* About Me Photo Styles */
+    .about-main-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+        margin: 40px auto;
+        text-align: left;
+        max-width: 800px; /* Match about-intro max-width */
+    }
+    .about-photo-container {
+        flex: 0 0 150px; /* Don't grow, don't shrink, base size 200px */
+    }
+    .about-photo {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .about-text-container {
+        flex: 1;
+    }
+    .about-text-container .about-intro,
+    .about-text-container .about-commitment {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
     
     /* Mobile Styles */
     @media (max-width: 768px) {
@@ -527,6 +553,15 @@
       }
       .portfolio-description {
         margin-top: 20px;
+      }
+      .about-main-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      .about-photo-container {
+        width: 180px; /* smaller photo on mobile */
       }
       .about-details {
         flex-direction: column;
@@ -654,8 +689,15 @@
     <section id="about">
         <div class="container reveal-on-scroll">
             <h2 class="section-title">關於 Vic</h2>
-            <p class="about-intro">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
-            <p class="about-commitment"><strong>專業承諾：</strong> 我堅持使用 100% 合法授權的專業軟體，以確保您的專案在法律與技術上都安全無虞。</p>
+            <div class="about-main-content">
+                <div class="about-photo-container">
+                    <img src="images/me.jpg" alt="Vic, Technical Artist" class="about-photo">
+                </div>
+                <div class="about-text-container">
+                    <p class="about-intro">我是一名擁有超過五年經驗的技術美術。我熱衷於解決 3D 製作流程中的各種疑難雜症，並致力於打造讓藝術家能夠揮灑創意的順暢工作環境。我的專長在於腳本編寫、工具開發以及跨軟體流程整合，期待能用我的技術為您的專案帶來實質的幫助。</p>
+                    <p class="about-commitment"><strong>專業承諾：</strong> 我堅持使用 100% 合法授權的專業軟體，以確保您的專案在法律與技術上都安全無虞。</p>
+                </div>
+            </div>
             <a href="https://github.com/VicYu1983/profile" target="_blank" class="about-portfolio-button reveal-on-scroll">查看完整作品集</a>
             <div class="about-details">
                 <div class="about-column">
@@ -715,6 +757,12 @@
             <summary>Q4: 這 4 小時是專屬於我一個客戶的服務嗎？</summary>
             <div class="faq-content">
               <p>A: 為了提供最高品質的服務，我會限制同時合作的客戶數量。您所訂閱的「每日 4 小時」代表我為您的專案投入的專注工作時間，用於開發、研究和解決問題。這確保了每個專案都能獲得足夠的專家精力與深度支持。</p>
+            </div>
+          </details>
+          <details class="faq-item reveal-on-scroll">
+            <summary>Q5: 合作模式是純遠端嗎？</summary>
+            <div class="faq-content">
+              <p>A: 主要以遠端協作為主。但若專案有特殊需求，例如需要現場導入流程或進行團隊教學，也可配合每月至多一日到公司進行現場支援。</p>
             </div>
           </details>
         </div>
